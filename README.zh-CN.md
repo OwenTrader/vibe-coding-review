@@ -1,0 +1,56 @@
+# vibe-coding-review
+
+> English version: [README.md](README.md)
+
+一个**多维度代码审查 / 代码审计** Agent Skill，覆盖 **48 个审查维度**，输出按严重程度分级（P0–P3）的结构化报告，每条问题都带 `文件:行号` 证据。
+
+## 安装
+
+```bash
+# 从本仓库安装该技能
+npx skills add OwenTrader/vibe-coding-review --skill code-review
+
+# 只列出仓库里有哪些技能，不安装
+npx skills add OwenTrader/vibe-coding-review --list
+```
+
+## 覆盖维度
+
+| 分类 | 维度 |
+|------|------|
+| 界面表现 | UI/UX 样式一致性、公共样式与组件抽离 |
+| 正确性 | 代码质量、业务逻辑正确性、状态管理、CRUD 完整性、功能链路追踪、错误处理与边界条件 |
+| 安全 | 安全边界、关键参数硬编码审计、权限与身份认证、Secrets 生命周期、隐私与数据合规 |
+| 数据 | 数据一致性、缓存策略、数据库设计、数据生命周期、数据迁移、灾备与数据恢复 |
+| 可靠性 | 日志规范（关键路径**必须有日志**且**不能无限堆积**）、可观测性、异步任务与消息队列、任务调度、限流与资源保护、容容灾与故障恢复、资源生命周期 |
+| 交付 | Feature Flag / 灰度发布、部署与发布、可回滚性、API 版本与兼容策略 |
+| 演进 | 架构合理性、可维护性、可扩展性、技术债务、产品缺口、API 契约、国际化与无障碍、可测试性、SEO / Web 性能 |
+
+完整维度总表与工作流见 `skills/code-review/SKILL.md`；每个维度的逐项检查清单见 `skills/code-review/references/`。
+
+## 使用方式
+
+直接让你的编码 Agent 做代码审查即可，例如：
+
+- "审查这个模块的代码"
+- "review 这个 PR，合并前检查"
+- "上线前审查这段代码"
+
+技能会逐维度核对、对 P0/P1 问题二次交叉验证，最后输出含"必须修复 / 可延后 / 待你决策"三张清单的报告。
+
+## 仓库结构
+
+```
+.
+├── README.md
+├── README.zh-CN.md
+├── LICENSE
+└── skills/
+    └── code-review/
+        ├── SKILL.md
+        └── references/
+```
+
+## 许可证
+
+Apache-2.0
