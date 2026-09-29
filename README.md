@@ -2,7 +2,7 @@
 
 > 中文说明见 [README.zh-CN.md](README.zh-CN.md)
 
-A multi-dimension **code review / code audit** Agent Skill with **48 review dimensions**, producing a severity-graded (P0–P3) structured report with file:line evidence for every finding.
+A multi-dimension **code review / code audit** Agent Skill with **49 review dimensions**, producing a severity-graded (P0–P3) structured report with file:line evidence for every finding.
 
 ## Install
 
@@ -20,6 +20,7 @@ npx skills add OwenTrader/vibe-coding-review --list
 |-------|-----------|
 | Presentation | UI/UX style consistency, shared style/component extraction |
 | Correctness | Code quality, business logic correctness, state management, CRUD completeness, functional flow tracing, error handling |
+| Tooling | Static-analysis & lint adoption (ruff for Python, ESLint for TS, etc.) — low-level errors must be caught by tools, not by human review alone |
 | Security | Security boundaries, hardcoded key-parameter audit, permissions & authn/authz, secrets lifecycle |
 | Data | Data consistency, caching, database design, data lifecycle, data migration, backup & recovery |
 | Reliability | Logging (mandatory on critical paths **and** must not grow unbounded), observability, async/message queue, task scheduling, rate limiting, disaster recovery, resource lifecycle |
