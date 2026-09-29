@@ -16,6 +16,7 @@
 - [ ] **异步规范**：await 遗漏、未处理的 Promise rejection、回调地狱、async 函数里同步重 IO 阻塞。
 - [ ] **资源释放**：文件句柄、定时器、事件监听、订阅、连接是否在组件卸载/函数退出时清理？
 - [ ] **导入规范**：循环依赖、通配符 import、未使用的 import、依赖方向倒置（底层依赖上层）。
+- [ ] **依赖清单卫生（manifest 级）**：清单文件（`package.json` / `requirements.txt` / `pyproject.toml` / `go.mod` / `pubspec.yaml`）中声明但代码**从不 import** 的**包级未使用依赖**（区别于 2.1 的源码级未使用 import）；版本范围合理性——禁止 `*` / `latest`，警惕 `^` / `~` 静默跨版本引入行为变更；锁定文件（lock）是否入库以保证可复现构建。完整供应链审计见维度 19（本节只做清单级快查）。
 - [ ] **框架最佳实践**：React 的 key/effect 依赖数组、Vue 的响应式陷阱、Flutter 的 build 中副作用、Electron 的主/渲染进程职责划分。
 
 ## 2.3 可维护性

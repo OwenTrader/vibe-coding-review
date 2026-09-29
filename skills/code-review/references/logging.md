@@ -22,6 +22,8 @@
 - [ ] **内存缓冲有界**：内存 ring buffer / 日志队列必须定长，溢出丢弃最旧（push-and-discard），禁止无界 append。
 - [ ] **结构化输出**：机器可读（JSON 或 key=value），包含 timestamp、level、module、msg；禁止裸 print 满天飞。
 - [ ] **stdout 兜底**：长期运行的服务若只输出到 stdout，需确认托管方（systemd/pm2/docker）有日志切割，否则等价于无轮转。
+- [ ] **数据库日志上限**：数据库**慢查询日志与错误日志**是否有大小 / 时间上限？慢查询阈值是否配置（PostgreSQL `log_min_duration_statement`、MySQL `slow_query_log` + `long_query_time`），且不会因阈值过松而**无上限落盘**写满磁盘？DB 日志目录 / 表空间是否有保留与清理策略（含 `log_rotation_size`、`log_directory` 清理）？审「代码里的日志」时不要漏掉**数据库自身的日志**。
+- [ ] **云日志管道上限**：使用云日志服务（CloudWatch Logs / Loki / ELK / 腾讯云 CLS 等）时，是否设置**采集上限、索引策略、保留期与定期清理**？是否存在"全量索引 + 永久保留"导致查询与成本双双失控（全量索引大字段、无过滤采集）。云原生日志管道同样属于"无限堆积"风险面。
 
 ## 7.3 日志内容质量
 

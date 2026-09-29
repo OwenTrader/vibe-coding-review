@@ -2,7 +2,7 @@
 
 > 中文说明见 [README.zh-CN.md](README.zh-CN.md)
 
-A multi-dimension **code review / code audit** Agent Skill with **49 review dimensions**, producing a severity-graded (P0–P3) structured report with file:line evidence for every finding.
+A multi-dimension **code review / code audit** Agent Skill with **55 review dimensions**, producing a severity-graded (P0–P3) structured report with file:line evidence for every finding.
 
 ## Install
 
@@ -19,11 +19,14 @@ npx skills add OwenTrader/vibe-coding-review --list
 | Group | Dimensions |
 |-------|-----------|
 | Presentation | UI/UX style consistency, shared style/component extraction |
-| Correctness | Code quality, business logic correctness, state management, CRUD completeness, functional flow tracing, error handling |
+| Correctness | Code quality, business logic correctness, state management, CRUD completeness, functional flow tracing, error handling, time & clock correctness (monotonic vs wall clock, DST, trading-day cutoffs) |
+| Testing | Test strategy & quality gates — test pyramid, coverage trend, flaky-test governance, CI must actually block |
 | Tooling | Static-analysis & lint adoption (ruff for Python, ESLint for TS, etc.) — low-level errors must be caught by tools, not by human review alone |
-| Security | Security boundaries, hardcoded key-parameter audit, permissions & authn/authz, secrets lifecycle |
+| Security | Security boundaries, hardcoded key-parameter audit, permissions & authn/authz, secrets lifecycle, **environment isolation & prod-data flow** |
 | Data | Data consistency, caching, database design, data lifecycle, data migration, backup & recovery |
-| Reliability | Logging (mandatory on critical paths **and** must not grow unbounded), observability, async/message queue, task scheduling, rate limiting, disaster recovery, resource lifecycle |
+| Reliability | Logging (mandatory on critical paths **and** must not grow unbounded — incl. DB & cloud-log caps), observability, async/message queue, task scheduling, rate limiting, disaster recovery, resource lifecycle, **client-side crash reporting & user feedback** |
+| AI | LLM integration security & cost — prompt injection, untrusted output, tool-call least privilege, token budget & degradation |
+| Mobile | Mobile specifics — secure storage, cert pinning, integrity, deeplink validation, lifecycle & offline |
 | Delivery | Feature flags / canary, deployment & release, rollback-ability, API versioning |
 | Evolution | Architecture, maintainability, extensibility, technical debt, product gaps, API contracts, privacy, i18n & a11y, testability, SEO/web performance |
 
